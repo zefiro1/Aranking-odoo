@@ -17,12 +17,27 @@
       </field>
     </record>
 
+     <record model="ir.ui.view" id="aranking.list1">
+      <field name="name">Usuarios</field>
+      <field name="model">aranking.aranking1</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="nombre"/>
+        </tree>
+      </field>
+    </record>
+
 
     <!-- actions opening views on models -->
 
     <record model="ir.actions.act_window" id="aranking.action_window">
-      <field name="name">Aranking window</field>
+      <field name="name">Tier list</field>
       <field name="res_model">aranking.aranking</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+    <record model="ir.actions.act_window" id="aranking.action_window1">
+      <field name="name">Players</field>
+      <field name="res_model">aranking.aranking1</field>
       <field name="view_mode">tree,form</field>
     </record>
 
@@ -56,6 +71,8 @@
 
     <menuitem name="List" id="aranking.menu_1_list" parent="aranking.menu_1"
               action="aranking.action_window"/>
+    <menuitem name="List" id="aranking.menu_2_list" parent="aranking.menu_2"
+              action="aranking.action_window1"/>
 
 
   </data>
