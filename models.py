@@ -29,3 +29,11 @@ class aranking(models.Model):
     def _value_pc(self):
         if self.partidas > 0:
             self.winrate = str(((float(self.win) / float(self.partidas)) * 100)) + "%"
+
+class aranking(models.Aranking):
+    _name='ArankingUserAdmin'
+    _description='Ranking Administrators'
+
+class aranking(models.Aranking):
+    _name='ArankingUserEveryone'
+    _description='Ranking Common Users'
