@@ -2,17 +2,40 @@
   <data>
     <!-- explicit list view definition -->
 
+<record id="partner_kanban_view" model="ir.ui.view">
+    <field name="name">aranking.kanban</field>
+    <field name="model">aranking.aranking1</field>
+    <field name="arch" type="xml">
+      <kanban class="o_res_partner_kanban">
+      <field name="nombre"/>
+
+        <templates>
+          <t t-name="kanban-box">
+            <div t-attf-class="oe_kanban_global_click">
+
+              <div class="oe_kanban_details">
+                <strong class="o_kanban_record_title">
+                  <field name="display_name"/>
+                </strong>
+              </div>
+            </div>
+          </t>
+        </templates>
+      </kanban>
+    </field>
+  </record>
     <record model="ir.ui.view" id="aranking.list">
-      <field name="name">Aranking list</field>
+      <field name="name" >Aranking list</field>
       <field name="model">aranking.aranking</field>
       <field name="arch" type="xml">
         <tree>
-          <field name="rank"/>
-          <field name="role"/>
-          <field name="champion"/>
-          <field name="partidas"/>
-          <field name="win"/>
-          <field name="winrate"/>
+          <field  class="text-light bg-dark" name="rank"/>
+          <field  class="text-light bg-dark" name="nombre"/>
+          <field class="text-light bg-dark" name="role"/>
+          <field class="text-light bg-dark" name="champion"/>
+          <field class="text-light bg-dark" name="partidas"/>
+          <field class="text-light bg-dark" name="win"/>
+          <field class="text-light bg-dark" name="winrate"/>
         </tree>
       </field>
     </record>
@@ -26,9 +49,8 @@
         </tree>
       </field>
     </record>
-
-
     <!-- actions opening views on models -->
+
 
     <record model="ir.actions.act_window" id="aranking.action_window">
       <field name="name">Tier list</field>
@@ -38,7 +60,7 @@
     <record model="ir.actions.act_window" id="aranking.action_window1">
       <field name="name">Players</field>
       <field name="res_model">aranking.aranking1</field>
-      <field name="view_mode">tree,form</field>
+      <field name="view_mode">tree,form,kanban</field>
     </record>
 
 

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+    <data noupdate="0">
+
+        <record id="Aranking_Admin" model="res.groups">
+            <field name="name">Admin</field>
+            <field name="category_id" ref="base.module_category_aranking1"/>
+        </record>
+
+        <record id="Aranking_User" model="res.groups">
+            <field name="name">User</field>
+            <field name="category_id" ref="base.module_module_category_aranking1"/>
+        </record>
+    </data>
+</odoo>
