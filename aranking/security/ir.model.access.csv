@@ -1,3 +1,4 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-Aranking_user_admin,ArankingUserAdmin,ArankingUserAdmin.model_aranking_admin,Aranking.Aranking_Admin,1,1,1,1
-Aranking_user_everyone,ArankingUserEveryone,ArankingUserEveryone.model_aranking_everyone,Aranking.Aranking_User,1,1,0,0
+Aranking_admin,Aranking Admin,model_aranking_admin,group_aranking1_Admin,1,1,1,1
+
+Aranking_user,Aranking User,model_aranking_user,group_aranking1_User,1,1,0,0
