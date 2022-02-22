@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+ 
+ 
+	<menuitem id="menu_root_tools"  name="Paco Tools" sequence="30" />
+ 	<menuitem id="menu_root_tools_averia_view"  name="Averias" parent="menu_root_tools"/>
+	<menuitem id="menu_root_tools_facturas_view"  name="Facturas" parent="menu_root_tools"/>
+        <menuitem id="menu_root_tools_cliente_view"  name="Cliente" parent="menu_root_tools"/>
+       
+    	<record model="ir.actions.act_window" id="listar_averia_action">
+            <field name="name">Averias</field>
+            <field name="res_model">tools.averia</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+	<record model="ir.actions.act_window" id="listar_facturas_action">
+            <field name="name">Facturas</field>
+            <field name="res_model">tools.facturas</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+	
+	<record model="ir.actions.act_window" id="listar_cliente_action">
+            <field name="name">Clientes</field>
+            <field name="res_model">tools.cliente</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+	<record model="ir.actions.act_window" id="listar_factaveria_action">
+            <field name="name">Averias</field>
+            <field name="res_model">tools.factaveria</field>
+            <field name="view_mode">form</field>
+        </record>
+ 
+        <menuitem id="menu_root_tools_listar_averia"  name="Listar averias" parent="menu_root_tools_averia_view" 		action="listar_averia_action" />
+	<menuitem id="menu_root_tools_listar_cliente"  name="Listar clientes" parent="menu_root_tools_cliente_view" 		action="listar_cliente_action" />
+ 	<menuitem id="menu_root_tools_listar_facturas"  name="Listar facturas" parent="menu_root_tools_facturas_view" 		action="listar_facturas_action" />
+        <record model="ir.ui.view" id="view_tools_averia_tree">
+            <field name="name">view.tools.averia.tree</field>
+            <field name="model">tools.averia</field>
+            <field name="arch" type="xml">
+                <tree string="Idea list">
+                    <field name="name"/>
+                    <field name="precio" />                    
+                </tree>
+            </field>
+        </record>
+	<record model="ir.ui.view" id="view_tools_cliente_tree">
+            <field name="name">view.tools.cliente.tree</field>
+            <field name="model">tools.cliente</field>
+            <field name="arch" type="xml">
+                <tree string="Idea list">
+            <field name="name"/>
+            <field name="nombre"/>
+		    <field name="apellido"/>		    
+		    <field name="direccion"/>
+            <field name="email"/>            
+		</tree>
+            </field>
+        </record>
+
+	<record model="ir.ui.view" id="view_tools_facturas_tree">
+            <field name="name">view.tools.facturas.tree</field>
+            <field name="model">tools.facturas</field>
+            <field name="arch" type="xml">
+                <tree string="Idea list">
+                    <field name="name"/>
+                    <field name="date"/>
+                    <field name="date2"/>
+                    <field name="naveria"/>
+	            <field name="name1"/>			
+		</tree>
+            </field>
+        </record>
+ 
+ 
+        <record model="ir.ui.view" id="view_tools_averia_form">
+            <field name='name'>view.tools.averia.form</field>
+            <field name="model">tools.averia</field>
+            <field name="arch" type="xml">
+                <form string="averia form" version="7.0">
+                    <sheet>
+                        <group colspan="2" col="2">
+                            <group style="background-color:lightblue; color:grey">                               
+                                <field name="name"/>
+                    		<field name="precio" />
+                        </group>
+                        </group>
+                        <notebook colspan="2">
+                            <page string="Descripcion">
+                                <field name="description"/>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+<record model="ir.ui.view" id="view_tools_factaveria_form">
+            <field name='name'>view.tools.factaveria.form</field>
+            <field name="model">tools.factaveria</field>
+            <field name="arch" type="xml">
+                <form string="averia form" version="7.0">
+                    <sheet>
+                        <group colspan="2" col="2">
+                            <group>                               
+                                <field name="name"/>
+                    		<field name="unit" />
+      				<field name="precio" />
+                                <field name="importe"/>								
+                            </group>
+                        </group>
+                        <notebook colspan="2">
+                            <page string="Descripcion">
+                                <field name="description"/>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+	<record model="ir.ui.view" id="view_tools_facturas_form">
+            <field name='name'>view.tools.facturas.form</field>
+            <field name="model">tools.facturas</field>
+            <field name="arch" type="xml">
+                <form string="facturas form" version="7.0">
+                    <sheet>
+                        <group colspan="2" col="2">
+                            <group style="background-color:lightgrey; color:black">                               
+                                <field name="name"/>                            
+                                <field name="date"/>
+                                <field name="date2"/>                                   
+                                <field name="naveria" nolabel="1" widget="one2many_list" colspan="2" mode="tree">
+                                	<tree string="Detalle" editable="bottom">
+      						            <field name="name" />
+      						            <field name="unit" />
+      						            <field name="precio" />
+                                        <field name="importe" sum='Total'/>
+     					            </tree>     					
+				                </field>                             
+                                <field name="subtotal"/>                                 
+                                <field name="IVA"/>
+                                <field name="subiva"/>                        
+                                <field name="total" style="font-size:150%; font-style:bold; background-color:yellow; color:red"/>  
+				                <field name="name1" string="Cliente" style="color:black; font-style:bold"/>                      
+                            </group>                            
+                        </group>
+			
+                        <notebook colspan="2">
+                            <page string="Descripcion">
+				<field name="description"/>
+                            </page>
+                        </notebook>
+			
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+	 <record model="ir.ui.view" id="view_tools_cliente_form">
+            <field name='name'>view.tools.cliente.form</field>
+            <field name="model">tools.cliente</field>
+            <field name="arch" type="xml">
+                <form string="cliente form" version="7.0">
+                    <sheet>
+                        <group colspan="2" col="2">
+                            <group style="background-color:lightgrey">                               
+                                <field name="name"/>
+                                <field name="nombre"/>
+ 		   		                <field name="apellido"/> 		   		                
+				                <field name="direccion"/>
+                                <field name="email" widget="email"/> 
+                                <button string="Email de Alta" type="object" name="send_mail"/>           
+                            </group>
+                        </group>                        
+                    </sheet>
+                </form>
+            </field>
+        </record>
+  
+</odoo>
