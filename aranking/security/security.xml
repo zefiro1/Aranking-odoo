@@ -2,16 +2,19 @@
 
 <odoo>
     <data noupdate="0">
+        <record model="ir.module.category" id="module_tools_category">
+            <field name="name">Aranking</field>
+            <field name="description">Tierlist y guia con personajes</field>
+        </record>
+        <record id="group_aranking1_User" model="res.groups">
+            <field name="name">User</field>
+            <field name="category_id" ref="module_tools_category"/>
+        </record>
         <record id="group_aranking1_Admin" model="res.groups">
             <field name="name">Administrador</field>
             <field name="implied_ids" eval="[(4, ref('group_tools_meca'))]"/>
             <field name="category_id" ref="module_tools_category"/>
             <field name="users" eval="[(4, ref('base.user_root'))]"/>
-        </record>
-
-        <record id="group_aranking1_User" model="res.groups">
-            <field name="name">User</field>
-            <field name="category_id" ref="module_tools_category"/>
         </record>
     </data>
 </odoo>
